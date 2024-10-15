@@ -1,0 +1,196 @@
+/* General Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #f3c680, #76b8e2);
+}
+
+/* Container for the checkout form */
+.checkout {
+    margin: 100px auto 30px;
+    width: 460px;
+    background: white;
+    border-radius: 15px;
+    padding: 160px 45px 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Credit Card Box Styling */
+.credit-card-box {
+    perspective: 1000px;
+    width: 400px;
+    height: 250px;
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.flip {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.credit-card-box .front, .credit-card-box .back {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #bd6772, #53223f);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 15px;
+    backface-visibility: hidden;
+    color: #fff;
+    font-family: 'Inconsolata', monospace;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.credit-card-box .front .chip, .credit-card-box .back .strip {
+    background: linear-gradient(135deg, #e5e5e5, #c1c1c1);
+    border-radius: 8px;
+    height: 45px;
+    width: 60px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.credit-card-box .front .chip {
+    background: linear-gradient(135deg, hsl(269, 54%, 87%), hsl(200, 64%, 89%));
+}
+
+/* Card Number */
+.credit-card-box .number {
+    font-size: 1.5em;
+    position: absolute;
+    top: 103px;
+    left: 20px;
+}
+
+/* Card Holder Name */
+.credit-card-box .card-holder label, .credit-card-box .card-expiration-date label {
+    font-size: 0.7em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.credit-card-box .card-holder, .credit-card-box .card-expiration-date {
+    position: absolute;
+    top: 170px;
+    left: 20px;
+    font-size: 1.2em;
+}
+
+/* Expiration Date */
+.credit-card-box .card-expiration-date {
+    left: auto;
+    right: 20px;
+}
+
+/* Back of the Card */
+.credit-card-box .back {
+    transform: rotateY(180deg);
+}
+
+.credit-card-box .back .strip {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    top: 30px;
+}
+
+/* CCV Styling */
+.credit-card-box .back .ccv {
+    height: 36px;
+    background: #fff;
+    width: 90%;
+    margin: 0 auto;
+    text-align: right;
+    padding: 10px;
+    color: #000;
+    border-radius: 5px;
+    position: absolute;
+    top: 110px;
+    left: 0;
+    right: 0;
+}
+
+/* Form Styling */
+.form fieldset {
+    border: none;
+    padding: 0;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.form fieldset label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: #555;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Card Number Input Fields */
+.input-cart-number {
+    width: 82px;
+    display: inline-block;
+    margin-right: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Expiration and CCV Inputs */
+.select, #card-ccv {
+    width: 100%;
+    height: 38px;
+    color: #555;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.select {
+    position: relative;
+    appearance: none;
+}
+
+/* Button Styles */
+.btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background: #49a09b;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background: #3d8291;
+}
+
+.credit-card-box:hover .flip {
+    transform: rotateY(180deg);
+}

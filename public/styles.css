@@ -1,0 +1,128 @@
+/* Define a custom property for rotation */
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+  
+  /* Root custom properties */
+  :root {
+    --card-height: 65vh;
+    --card-width: calc(var(--card-height) / 1.5);
+    --main-color: #5ddcff;
+    --secondary-color: #3c67e3;
+    --accent-color: #4e00c2;
+  }
+  
+  /* General body styles */
+  body {
+    min-height: 100vh;
+    background: #212534;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  
+  /* Container styles */
+  .card {
+    background: #191c29;
+    width: var(--card-width);
+    height: var(--card-height);
+    padding: 20px;
+    position: relative;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5em;
+    color: rgba(88, 199, 250, 0%);
+    font-family: 'Arial', sans-serif;
+    transition: color 1s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  
+  /* Card hover effect to reveal text color */
+  .card:hover {
+    color: rgba(88, 199, 250, 100%);
+  }
+  
+  /* Disable animations and make before/after elements fade on hover */
+  .card:hover::before, .card:hover::after {
+    animation: none;
+    opacity: 0;
+  }
+  
+  /* Magic card glowing border (before element) */
+  .card::before {
+    content: "";
+    width: 104%;
+    height: 102%;
+    border-radius: 8px;
+    background-image: linear-gradient(var(--rotate), var(--main-color), var(--secondary-color) 43%, var(--accent-color));
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: -2%;
+    animation: spin 2.5s linear infinite;
+  }
+  
+  /* Card blur glow (after element) */
+  .card::after {
+    content: "";
+    position: absolute;
+    top: calc(var(--card-height) / 6);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc(var(--card-height) / 6));
+    background-image: linear-gradient(var(--rotate), var(--main-color), var(--secondary-color) 43%, var(--accent-color));
+    opacity: 1;
+    animation: spin 2.5s linear infinite;
+    transition: opacity 0.5s;
+  }
+  
+  /* Spin keyframe for rotation animation */
+  @keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }
+  
+  /* Style for the Google login button */
+  .login-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: #4285f4;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #357ae8;
+  }
+  
+  .google-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
